@@ -2,19 +2,19 @@
 
 /**
  * Plugin Name:       Redirection Extended
- * Plugin URI:        (#plugin_url#)
+ * Plugin URI:        https://github.com/helsingborg-stad/redirection-extended
  * Description:       Extends the Wordpress Redirection plugin
  * Version:           1.0.0
  * Author:            Nikolas Ramstedt
- * Author URI:        (#plugin_author_url#)
+ * Author URI:        https://github.com/nramstedt
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       redirection-extended
  * Domain Path:       /languages
  */
 
- // Protect agains direct file access
-if (! defined('WPINC')) {
+// Protect agains direct file access
+if (!defined('WPINC')) {
     die;
 }
 
