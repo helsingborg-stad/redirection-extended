@@ -35,3 +35,14 @@ $loader->register();
 
 // Start application
 new RedirectionExtended\App();
+
+// Acf auto import and export
+add_action('plugins_loaded', function () {
+    $acfExportManager = new \AcfExportManager\AcfExportManager();
+    $acfExportManager->setTextdomain('redirection-extended');
+    $acfExportManager->setExportFolder(REDIRECTIONEXTENDED_PATH . 'acf-fields/');
+    $acfExportManager->autoExport(array(
+        'redirection-extended' => 'group_5de91ccdd7b7e',
+    ));
+    $acfExportManager->import();
+});
