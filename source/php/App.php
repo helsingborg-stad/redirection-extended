@@ -7,8 +7,20 @@ class App
     public function __construct()
     {
         add_action('redirection_monitor_created', array($this, 'recursivelyRedirectChildren'), 10, 3);
+        add_action('acf/init', array($this, 'registerOptionsPage'));
     }
 
+    public function registerOptionsPage()
+    {
+        if (function_exists('acf_add_options_page')) {
+            acf_add_options_sub_page(array(
+                'page_title' => 'Redirection Extended',
+                'menu_title' => 'Redirection Extended',
+                'parent_slug' => 'tools.php',
+            ));
+        }
+    }
+    
     public function recursivelyRedirectChildren($newItem, $oldUrl, $postId)
     {
         $newUrl = $newItem->match->url;
