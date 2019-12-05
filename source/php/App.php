@@ -23,6 +23,10 @@ class App
     
     public function recursivelyRedirectChildren($newItem, $oldUrl, $postId)
     {
+        if (!get_field('redirect_child_pages', 'options')) {
+            return;
+        }
+
         $newUrl = $newItem->match->url;
         $children = get_children($postId);
 
