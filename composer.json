@@ -14,5 +14,10 @@
             "type": "vcs",
             "url": "https://github.com/helsingborg-stad/redirection-extended"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+          "RedirectionExtended\\": "source/php/"
+        }
+    }
 }

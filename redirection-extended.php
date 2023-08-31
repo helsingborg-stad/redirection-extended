@@ -24,14 +24,11 @@ define('REDIRECTIONEXTENDED_TEMPLATE_PATH', REDIRECTIONEXTENDED_PATH . 'template
 
 load_plugin_textdomain('redirection-extended', false, plugin_basename(dirname(__FILE__)) . '/languages');
 
-require_once REDIRECTIONEXTENDED_PATH . 'source/php/Vendor/Psr4ClassLoader.php';
+// Autoload from plugin
+if (file_exists(REDIRECTIONEXTENDED_PATH . 'vendor/autoload.php')) {
+    require_once REDIRECTIONEXTENDED_PATH . 'vendor/autoload.php';
+}
 require_once REDIRECTIONEXTENDED_PATH . 'Public.php';
-
-// Instantiate and register the autoloader
-$loader = new RedirectionExtended\Vendor\Psr4ClassLoader();
-$loader->addPrefix('RedirectionExtended', REDIRECTIONEXTENDED_PATH);
-$loader->addPrefix('RedirectionExtended', REDIRECTIONEXTENDED_PATH . 'source/php/');
-$loader->register();
 
 // Start application
 new RedirectionExtended\App();
