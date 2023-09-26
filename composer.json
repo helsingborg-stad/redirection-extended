@@ -17,7 +17,8 @@
     ],
     "autoload": {
         "psr-4": {
-          "RedirectionExtended\\": "source/php/"
+            "RedirectionExtended\\": "source/php/"
         }
-    }
+    },
+    "version": "2.0.0"
 }

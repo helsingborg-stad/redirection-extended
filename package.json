@@ -1,22 +1,21 @@
 {
-  "name": "redirection-extended",
-  "version": "1.0.0",
-  "description": "Extends the Wordpress Redirection plugin",
-  "main": "",
-  "scripts": {
-    "build": "",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Svanmark/Wordpress-Plugin-Boilerplate.git"
-  },
-  "author": "Nikolas Ramstedt",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Svanmark/Wordpress-Plugin-Boilerplate/issues"
-  },
-  "homepage": "https://github.com/Svanmark/Wordpress-Plugin-Boilerplate",
-  "devDependencies": {
-  }
+    "name": "redirection-extended",
+    "version": "2.0.0",
+    "description": "Extends the Wordpress Redirection plugin",
+    "main": "",
+    "scripts": {
+        "build": "",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Svanmark/Wordpress-Plugin-Boilerplate.git"
+    },
+    "author": "Nikolas Ramstedt",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Svanmark/Wordpress-Plugin-Boilerplate/issues"
+    },
+    "homepage": "https://github.com/Svanmark/Wordpress-Plugin-Boilerplate",
+    "devDependencies": []
 }
