@@ -1,6 +1,6 @@
 {
     "name": "redirection-extended",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "description": "Extends the Wordpress Redirection plugin",
     "main": "",
     "scripts": {
