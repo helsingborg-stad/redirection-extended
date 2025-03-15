@@ -4,7 +4,7 @@
  * Plugin Name:       Redirection Extended
  * Plugin URI:        https://github.com/helsingborg-stad/redirection-extended
  * Description:       Extends the Wordpress Redirection plugin
- * Version: 3.0.4
+ * Version: 3.0.5
  * Author:            Nikolas Ramstedt
  * Author URI:        https://github.com/nramstedt
  * License:           MIT
