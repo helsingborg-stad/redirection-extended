@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+
 namespace RedirectionExtended;
 
 class App
@@ -20,7 +23,7 @@ class App
             ));
         }
     }
-    
+
     public function recursivelyRedirectChildren($newItem, $oldUrl, $postId)
     {
         if (!get_field('redirect_child_pages', 'options')) {
@@ -46,12 +49,12 @@ class App
             do_action('redirection_remove_existing', $newChildUrl, $child->ID);
 
             $data = array(
-                'url'         => $oldChildUrl,
+                'url' => $oldChildUrl,
                 'action_data' => array('url' => $newChildUrl),
-                'match_type'  => 'url',
+                'match_type' => 'url',
                 'action_type' => 'url',
                 'action_code' => 301,
-                'group_id'    => '1',
+                'group_id' => '1',
             );
 
             $newChildItem = \Red_Item::create($data);
