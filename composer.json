@@ -9,6 +9,13 @@
             "email": "nikolas.ramstedt@helsingborg.se"
         }
     ],
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "lint": "vendor/bin/mago lint",
+        "fix": "vendor/bin/mago lint --format-after-fix --fix",
+        "format": "vendor/bin/mago fmt"
+    },
     "repositories": [
         {
             "type": "vcs",
@@ -18,6 +25,18 @@
     "autoload": {
         "psr-4": {
             "RedirectionExtended\\": "source/php/"
+        }
+    },
+    "suggest": {
+        "helsingborg-stad/municipio": "^6.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "carthage-software/mago": "^1.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "carthage-software/mago": true
         }
     }
 }
