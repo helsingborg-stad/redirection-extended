@@ -78,6 +78,13 @@ class RedirectPolicyTest extends TestCase
             'admin page' => [['action_type' => 'url', 'url' => '/wp-admin/edit.php', 'regex' => 0]],
             'rest api' => [['action_type' => 'url', 'url' => '/wp-json/wp/v2/users', 'regex' => 0]],
             'xmlrpc' => [['action_type' => 'url', 'url' => '/xmlrpc.php', 'regex' => 0]],
+            'login escaped query' => [['action_type' => 'url', 'url' => '/wp-login.php\\?', 'regex' => 0]],
+            'login escaped query with params' => [['action_type' => 'url', 'url' => '/wp-login.php\\?action=lostpassword', 'regex' => 0]],
+            'admin escaped query' => [['action_type' => 'url', 'url' => '/wp-admin\\?', 'regex' => 0]],
+            'rest escaped query' => [['action_type' => 'url', 'url' => '/wp-json\\?', 'regex' => 0]],
+            'login encoded escaped query' => [['action_type' => 'url', 'url' => '/wp-login.php%5C%3F', 'regex' => 0]],
+            'login double encoded' => [['action_type' => 'url', 'url' => '/wp%252Dlogin.php', 'regex' => 0]],
+            'match url only' => [['action_type' => 'url', 'url' => '/harmless', 'match_url' => '/wp-login.php', 'regex' => 0]],
         ];
     }
 }

@@ -42,14 +42,31 @@ class RedirectPolicy
             return self::VIOLATION_REGEX;
         }
 
-        $url = $data['url'] ?? null;
-
-        if (!is_string($url) || $url === '') {
-            return null;
+        // Check both the source as entered and the path Redirection actually matches requests against.
+        foreach ([$data['url'] ?? null, $data['match_url'] ?? null] as $source) {
+            if (is_string($source) && self::isProtectedPath(self::getPath($source))) {
+                return self::VIOLATION_PROTECTED_SOURCE;
+            }
         }
 
-        $path = explode('?', rawurldecode($url), 2)[0];
+        return null;
+    }
 
-        return preg_match(self::PROTECTED_PATH_PATTERN, $path) === 1 ? self::VIOLATION_PROTECTED_SOURCE : null;
+    /**
+     * The path part of a source, cut where Redirection starts the query.
+     *
+     * Redirection treats both `?` and the escaped `\?` as the query separator,
+     * so `/wp-login.php\?` matches `/wp-login.php`.
+     */
+    private static function getPath(string $source): string
+    {
+        $path = explode('?', urldecode(rawurldecode($source)), 2)[0];
+
+        return rtrim($path, '\\');
+    }
+
+    private static function isProtectedPath(string $path): bool
+    {
+        return preg_match(self::PROTECTED_PATH_PATTERN, $path) === 1;
     }
 }
