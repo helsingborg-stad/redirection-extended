@@ -41,6 +41,7 @@ class EditorAccess
         add_filter('redirection_capability_check', [$this, 'filterCapabilityCheck'], 10, 2);
 
         (new ToolsMenu())->addHooks();
+        (new RedirectValidator($this))->addHooks();
     }
 
     /**
