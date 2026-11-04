@@ -26,9 +26,6 @@ class EditorAccess
     /** Default capability required for everything editors are not allowed to do. */
     public const ADMIN_CAPABILITY = 'list_users';
 
-    /** Menu slug used when the Tools menu is hidden for the current user. */
-    public const MENU_SLUG = 'tools.php?page=redirection.php';
-
     /**
      * Redirection capability names (see Redirection_Capabilities) that editors may use.
      */
@@ -43,8 +40,7 @@ class EditorAccess
         add_filter('redirection_role', [$this, 'filterPluginAccess']);
         add_filter('redirection_capability_check', [$this, 'filterCapabilityCheck'], 10, 2);
 
-        // Municipio removes the Tools menu for editors at priority 9000.
-        add_action('admin_menu', [$this, 'addMenuWhenToolsIsHidden'], 9001);
+        (new ToolsMenu())->addHooks();
     }
 
     /**
@@ -78,34 +74,5 @@ class EditorAccess
         $capability = apply_filters('RedirectionExtended/AdminCapability', self::ADMIN_CAPABILITY);
 
         return is_string($capability) && $capability !== '' ? $capability : self::ADMIN_CAPABILITY;
-    }
-
-    /**
-     * Adds a top-level "Redirects" menu item when the Tools menu has been removed
-     * for the current user, so that editors can reach the Redirection page.
-     */
-    public function addMenuWhenToolsIsHidden(): void
-    {
-        if (!class_exists('\Redirection_Capabilities') || !current_user_can(self::EDITOR_CAPABILITY)) {
-            return;
-        }
-
-        // WordPress has no API for reading the admin menu, so the global is read directly.
-        // @mago-expect lint:no-global
-        $menu = $GLOBALS['menu'] ?? [];
-
-        if (in_array('tools.php', array_column((array) $menu, 2), true)) {
-            return;
-        }
-
-        add_menu_page(
-            __('Redirects', 'redirection-extended'),
-            __('Redirects', 'redirection-extended'),
-            self::EDITOR_CAPABILITY,
-            self::MENU_SLUG,
-            '',
-            'dashicons-randomize',
-            21,
-        );
     }
 }
