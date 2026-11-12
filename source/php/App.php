@@ -11,6 +11,8 @@ class App
     {
         add_action('redirection_monitor_created', array($this, 'recursivelyRedirectChildren'), 10, 3);
         add_action('acf/init', array($this, 'registerOptionsPage'));
+
+        (new EditorAccess())->addHooks();
     }
 
     public function registerOptionsPage()
